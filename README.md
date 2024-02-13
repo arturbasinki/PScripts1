@@ -1,6 +1,8 @@
 # PScripts1
 
-powershell utility scripts
+Powershell utility scripts
+
+To use scripts at every new terminal session:
 
 1. Create folder for scripts in a location of your choice. For example, you can create C:\YourScripts.
 2. Then open your PowerShell profile. You can do this by typing $PROFILE in the PowerShell console. If the profile file does not exist, you can create it by typing New-Item -path $PROFILE -type file -force.
@@ -11,3 +13,7 @@ powershell utility scripts
 ## ViewType.ps1
 
 usage: .\ViewType.ps1 -type '.jpg'
+
+## DeleteType.ps1
+
+usage: .\DeleteType.ps1 -type '.log'
