@@ -2,6 +2,8 @@
 
 Powershell utility scripts
 
+curl -OL https://raw.githubusercontent.com/arturbasinki/PScripts1/main/install.ps1 | iex; install
+
 To use scripts at every new terminal session:
 
 1. Create folder for scripts in a location of your choice. For example, you can create C:\YourScripts.
