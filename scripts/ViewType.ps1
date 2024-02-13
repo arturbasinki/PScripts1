@@ -2,20 +2,20 @@ param (
     [string]$type = '.txt'
 )
 
-# Użyj $PSScriptRoot do określenia folderu, w którym skrypt jest uruchamiany
+# Use $PSScriptRoot to specify the folder where the script runs
 $dir = $PSScriptRoot
 
-# Użyj Get-ChildItem do przeszukania folderu i podfolderów
+# Use Get-ChildItem to search a folder and subfolders
 $files = Get-ChildItem -Path $dir -Recurse -Filter "*$type"
 
-# Wyświetl pełne ścieżki do wszystkich plików o określonym rozszerzeniu
+# Display full paths to all files with a specific extension
 $files | ForEach-Object {
     Write-Output $_.FullName
 }
 
-# Wyświetl liczbę znalezionych plików
+# View the number of files found
 Write-Output ("Number of files found: " + $files.Count)
 
-# Oblicz i wyświetl łączną objętość plików
+# Calculate and display the total volume of files
 $sum = ($files | Measure-Object -Property Length -Sum).Sum / 1MB
 Write-Output ("The combined file size is: {0:N2} MB" -f $sum)
