@@ -26,10 +26,14 @@ if ($res -eq 'yes') {
     $deletedFiles = 0
     $deletedSize = 0
     $files | ForEach-Object {
-        if (Remove-Item $_.FullName -ErrorAction SilentlyContinue) {
-            $deletedFiles++
+        try {
+            Remove-Item $_.FullName -Force -ErrorAction Stop
+            $deletedFiles += 1
             $deletedSize += $_.Length
         }
+        catch {
+            Write-Output ("Failed to delete file: " + $_.FullName)
+        }        
     }
     $deletedSize = $deletedSize / 1MB
     Write-Output ("Number of files deleted: " + $deletedFiles)
