@@ -17,13 +17,13 @@ $files | ForEach-Object {
 Write-Output ("Number of files found: " + $files.Count)
 
 # Oblicz i wyświetl łączną objętość plików
-$suma = ($files | Measure-Object -Property Length -Sum).Sum / 1MB
-Write-Output ("The combined file size is: {0:N2} MB" -f $suma)
+$sum = ($files | Measure-Object -Property Length -Sum).Sum / 1MB
+Write-Output ("The combined file size is: {0:N2} MB" -f $sum)
 
 # Pytaj użytkownika, czy chce usunąć files
-$odpowiedz = Read-Host "Delete files? (yes/no)"
-if ($odpowiedz -eq 'yes') {
+$res = Read-Host "Delete files? (yes/no)"
+if ($res -eq 'yes') {
     $files | Remove-Item -Confirm:$false
     Write-Output ("Number of files deleted: " + $files.Count)
-    Write-Output ("The deleted files size is: {0:N2} MB" -f $suma)
+    Write-Output ("The deleted files size is: {0:N2} MB" -f $sum)
 }
