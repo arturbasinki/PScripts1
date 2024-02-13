@@ -23,7 +23,15 @@ Write-Output ("The combined file size is: {0:N2} MB" -f $sum)
 # Prompt the user to confirm to delete the files
 $res = Read-Host "Delete files? (yes/no)"
 if ($res -eq 'yes') {
-    $files | Remove-Item -Confirm:$false
-    Write-Output ("Number of files deleted: " + $files.Count)
-    Write-Output ("The deleted files size is: {0:N2} MB" -f $sum)
+    $deletedFiles = 0
+    $deletedSize = 0
+    $files | ForEach-Object {
+        if (Remove-Item $_.FullName -ErrorAction SilentlyContinue) {
+            $deletedFiles++
+            $deletedSize += $_.Length
+        }
+    }
+    $deletedSize = $deletedSize / 1MB
+    Write-Output ("Number of files deleted: " + $deletedFiles)
+    Write-Output ("The deleted files size is: {0:N2} MB" -f $deletedSize)
 }
