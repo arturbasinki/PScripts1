@@ -7,3 +7,7 @@ powershell utility scripts
 3. Open the profile file in a text editor, such as Notepad.
 4. Add the following line to the end of the profile file: .\C:\YourScript.ps1. Replace C:\YourScript.ps1 with the path to your script.
 5. Save and close the profile file.
+
+## ViewType.ps1
+
+usage: .\ViewType.ps1 -type '.jpg'
