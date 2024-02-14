@@ -10,7 +10,9 @@ $files = Get-ChildItem -Path $dir -Recurse -Filter "*$type"
 
 # Display full paths to all files with a specific extension
 $files | ForEach-Object {
-    Write-Output $_.FullName
+    # Write-Output $_.FullName
+    $shortPath = $_.FullName.Replace($dir, '')
+    Write-Output $shortPath
 }
 
 # View the number of files found
