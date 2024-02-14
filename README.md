@@ -9,6 +9,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 ## view-type.ps1
 
 Shows all files with specified extension in current directory and its subdirectories.
+
 usage:
 
 ```terminal
@@ -18,6 +19,7 @@ PS > view-type -type '.jpg'
 ## delete-type.ps1
 
 Deletes all files with specified extension in current directory and its subdirectories.
+
 usage:
 
 ```terminal
