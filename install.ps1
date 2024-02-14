@@ -45,7 +45,7 @@ foreach ($url in $scriptUrls) {
 }
 
 # Update the $env:Path variable in the profile file
-Write-Host "Updating the \$env:Path variable in the profile file..."
+Write-Host "Updating the env variable in the profile file..."
 $profileContent = Get-Content -Path $PROFILE
 if ($profileContent -notcontains "`$env:Path += `";$scriptsPath`"") {
     Add-Content -Path $PROFILE -Value "`$env:Path += `";$scriptsPath`""
