@@ -14,20 +14,29 @@ if (!(Test-Path -Path $scriptsPath)) {
     New-Item -ItemType Directory -Path $scriptsPath
 }
 
-# Download scripts
-$scripts = Invoke-WebRequest -Uri 'https://github.com/arturbasinki/PScripts1/tree/main/scripts'
+# URL list of scripts to download
+$scriptUrls = @(
+    'https://raw.githubusercontent.com/arturbasinki/PScripts1/main/scripts/delete-type.ps1',
+    'https://raw.githubusercontent.com/arturbasinki/PScripts1/main/scripts/view-type.ps1'
+    # Add more links if needed
+)
 
-# Copy scripts to folder Scripts and add aliases
-$scripts | ForEach-Object {
-    $destination = Join-Path -Path $scriptsPath -ChildPath $_.Name
-    $_ | Copy-Item -Destination $destination
+foreach ($url in $scriptUrls) {
+    # Download script
+    $scriptContent = (New-Object System.Net.WebClient).DownloadString($url)
 
-    # Add alias
-    $aliasName = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
+    # Write script as .ps1 in Scripts directory
+    $scriptName = [System.IO.Path]::GetFileName($url)
+    $destination = Join-Path -Path $scriptsPath -ChildPath $scriptName
+    $scriptContent | Out-File -FilePath $destination
+
+    # Create alias
+    $aliasName = [System.IO.Path]::GetFileNameWithoutExtension($url)
     if (!(Get-Alias -Name $aliasName -ErrorAction SilentlyContinue)) {
         Set-Alias -Name $aliasName -Value $destination
     }
 }
+
 # Update variable $env:Path in $PROFILE file
 $profileContent = Get-Content -Path $PROFILE
 if ($profileContent -notcontains "`$env:Path += `";$scriptsPath`"") {
