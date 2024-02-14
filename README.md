@@ -6,7 +6,7 @@ Powershell utility scripts. To install all at once, execute this script in PS:
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/arturbasinki/PScripts1/main/install.ps1'))
 ```
 
-## ViewType.ps1
+## view-type.ps1
 
 usage:
 
@@ -14,7 +14,7 @@ usage:
 PS > view-type -type '.jpg'
 ```
 
-## DeleteType.ps1
+## delete-type.ps1
 
 usage:
 
