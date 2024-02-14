@@ -1,8 +1,8 @@
 # PScripts1
 
-Powershell utility scripts
+Powershell utility scripts, to install all at once, execute this script in PS:
 
-curl -OL https://raw.githubusercontent.com/arturbasinki/PScripts1/main/install.ps1 | iex; install
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/arturbasinki/PScripts1/main/install.ps1'))
 
 To use scripts at every new terminal session:
 
