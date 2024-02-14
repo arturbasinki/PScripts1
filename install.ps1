@@ -15,7 +15,7 @@ if (!(Test-Path -Path $scriptsPath)) {
 }
 
 # Download scripts
-$scripts = Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/arturbasinki/PScripts1/main/scripts/'
+$scripts = Invoke-WebRequest -Uri 'https://github.com/arturbasinki/PScripts1/tree/main/scripts'
 
 # Copy scripts to folder Scripts and add aliases
 $scripts | ForEach-Object {
