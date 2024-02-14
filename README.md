@@ -6,10 +6,10 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 
 ## ViewType.ps1
 
-usage:
+usage:<br>
 PS > view-type -type '.jpg'
 
 ## DeleteType.ps1
 
-usage:
+usage:<br>
 PS > delete-type -type '.log'
